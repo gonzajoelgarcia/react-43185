@@ -1,6 +1,7 @@
 import React from "react";
-import NavbarItem from "./Navbar/NavbarItem";
-import CardWidget from "./CardWidget/CardWidget";
+import NavbarItem from "./NavbarItem";
+import CardWidget from "../CardWidget/CardWidget";
+import "./Navbar.css";
 
 const items = ["Fútbol Argentino", "Temporada 22/23", "Retro"];
 
@@ -62,6 +63,9 @@ const Navbar = (props) => {
             ></input>
             <button className="btn btn-outline-light" type="submit">
               <CardWidget />
+              <span className="cart-count" id="cart-count">
+                2
+              </span>
             </button>
           </form>
         </div>
