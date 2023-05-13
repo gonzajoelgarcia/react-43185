@@ -7,7 +7,7 @@ const items = ["Fútbol Argentino", "Temporada 22/23", "Retro"];
 
 const Navbar = (props) => {
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-transparent">
       <div className="container-fluid">
         <a className="navbar-brand" href="!#">
           {props.navbarLogo}

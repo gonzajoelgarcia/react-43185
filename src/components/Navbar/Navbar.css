@@ -9,3 +9,9 @@
   top: 3px;
   right: 5px;
 }
+
+.navbar-brand {
+  font-family: Verdana, Geneva, Tahoma;
+  font-size: 24px;
+  margin-left: 10px;
+}

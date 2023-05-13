@@ -1,84 +1,91 @@
-import "./App.css";
+import React from "react";
 import Card from "./components/Card/Card";
 import Navbar from "./components/Navbar/Navbar";
 import ItemListContainer from "./components/ItemListContainer/ItemListContainer";
+/* imagenes */
+import imagenFondo from "./assets/background.jpg";
+import imagen1 from "./assets/imagen1.png";
+import imagen2 from "./assets/imagen2.png";
+import imagen3 from "./assets/imagen3.png";
+import imagen4 from "./assets/imagen4.png";
+import imagen5 from "./assets/imagen5.png";
+import imagen6 from "./assets/imagen6.png";
+import imagen7 from "./assets/imagen7.png";
+import imagen8 from "./assets/imagen8.png";
+import imagen9 from "./assets/imagen9.png";
+import imagen10 from "./assets/imagen10.png";
 
 function App() {
   const contenido = [
     {
       titulo: "Boca Juniors Titular 2002",
       descripcion: "$25.000",
-      imagen:
-        "https://mezzalacamisetas.com.ar/wp-content/uploads/2023/02/20230301_173051_0000.png",
+      imagen: imagen1,
     },
     {
       titulo: "Francia Titular 2006",
       descripcion: "$25.000",
-      imagen:
-        "https://mezzalacamisetas.com.ar/wp-content/uploads/2023/02/s-l1600-jpg.webp",
+      imagen: imagen2,
     },
     {
       titulo: "Real Madrid Titular 2006/07",
       descripcion: "$25.000",
-      imagen:
-        "https://mezzalacamisetas.com.ar/wp-content/uploads/2023/02/benzalface_8e8ea97f-bace-4310-9e7b-4f9c1b25a1e5.webp",
+      imagen: imagen3,
     },
     {
       titulo: "Lazio Visitante 2000/01",
       descripcion: "$25.000",
-      imagen:
-        "https://mezzalacamisetas.com.ar/wp-content/uploads/2023/02/3131-Editado.png",
+      imagen: imagen4,
     },
     {
       titulo: "Manchester United Titular 1992/93",
       descripcion: "$25.000",
-      imagen:
-        "https://mezzalacamisetas.com.ar/wp-content/uploads/2021/03/united9293.jpg",
+      imagen: imagen5,
     },
     {
       titulo: "Lazio Titular 2022/23",
       descripcion: "$28.000",
-      imagen:
-        "https://mezzalacamisetas.com.ar/wp-content/uploads/2023/03/descarga-9.webp",
+      imagen: imagen6,
     },
     {
       titulo: "Arsenal Titular 2022/23",
       descripcion: "$28.000",
-      imagen:
-        "https://mezzalacamisetas.com.ar/wp-content/uploads/2022/09/descarga.jfif",
+      imagen: imagen7,
     },
     {
-      titulo: "FC Barcelona Titular 2022/23",
+      titulo: "Barcelona Titular 2022/23",
       descripcion: "$26.500",
-      imagen:
-        "https://mezzalacamisetas.com.ar/wp-content/uploads/2022/09/descarga-5.jfif",
+      imagen: imagen8,
     },
     {
       titulo: "Japón Especial 2023",
       descripcion: "$32.000",
-      imagen:
-        "https://mezzalacamisetas.com.ar/wp-content/uploads/2023/03/PhotoRoom_004_20230101_164504.png",
+      imagen: imagen9,
     },
     {
-      titulo: "Corinthians Tercera 2022/23",
+      titulo: "Corinthians 3ra 2022/23",
       descripcion: "$26.500",
-      imagen:
-        "https://mezzalacamisetas.com.ar/wp-content/uploads/2023/01/3275993394-Editado.png",
+      imagen: imagen10,
     },
   ];
+
   return (
-    <div className="App">
-      <Navbar navbarLogo={"FUT"} />
-      <ItemListContainer greeting={"Bienvenido a FUT"} />
-      <div className="card-container">
-        {contenido.map((camiseta, index) => (
-          <Card
-            key={index}
-            titulo={camiseta.titulo}
-            descripcion={camiseta.descripcion}
-            imagen={camiseta.imagen}
-          />
-        ))}
+    <div className="App" style={{ backgroundImage: `url(${imagenFondo})` }}>
+      <div className="App">
+        <Navbar navbarLogo={"FUT"} />
+        <ItemListContainer greeting={"Bienvenido a FUT"} />
+        <div className="card-container">
+          <div className="card-container">
+            {contenido.map((camiseta, index) => (
+              <Card
+                key={index}
+                titulo={camiseta.titulo}
+                descripcion={camiseta.descripcion}
+                imagen={camiseta.imagen}
+              />
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   );
