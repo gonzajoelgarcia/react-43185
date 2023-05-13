@@ -9,9 +9,7 @@ const Navbar = (props) => {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-transparent">
       <div className="container-fluid">
-        <a className="navbar-brand" href="!#">
-          {props.navbarLogo}
-        </a>
+        <img className="navbarLogo" src={props.navbarLogo} alt="Logo" />
         <button
           className="navbar-toggler"
           type="button"

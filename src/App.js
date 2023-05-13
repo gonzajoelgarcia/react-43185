@@ -14,6 +14,7 @@ import imagen7 from "./assets/imagen7.png";
 import imagen8 from "./assets/imagen8.png";
 import imagen9 from "./assets/imagen9.png";
 import imagen10 from "./assets/imagen10.png";
+import logo from "./assets/logo192.png";
 
 function App() {
   const contenido = [
@@ -38,7 +39,7 @@ function App() {
       imagen: imagen4,
     },
     {
-      titulo: "Manchester United Titular 1992/93",
+      titulo: "M. United Titular 1992/93",
       descripcion: "$25.000",
       imagen: imagen5,
     },
@@ -71,20 +72,18 @@ function App() {
 
   return (
     <div className="App" style={{ backgroundImage: `url(${imagenFondo})` }}>
-      <div className="App">
-        <Navbar navbarLogo={"FUT"} />
-        <ItemListContainer greeting={"Bienvenido a FUT"} />
+      <Navbar navbarLogo={logo} />
+      <ItemListContainer greeting={"Bienvenido a FUT"} />
+      <div className="card-container">
         <div className="card-container">
-          <div className="card-container">
-            {contenido.map((camiseta, index) => (
-              <Card
-                key={index}
-                titulo={camiseta.titulo}
-                descripcion={camiseta.descripcion}
-                imagen={camiseta.imagen}
-              />
-            ))}
-          </div>
+          {contenido.map((camiseta, index) => (
+            <Card
+              key={index}
+              titulo={camiseta.titulo}
+              descripcion={camiseta.descripcion}
+              imagen={camiseta.imagen}
+            />
+          ))}
         </div>
       </div>
     </div>
