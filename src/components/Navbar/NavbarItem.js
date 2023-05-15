@@ -1,11 +1,12 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 const NavbarItem = (props) => {
   return (
     <li>
-      <a className="dropdown-item" href="!#">
+      <NavLink to="/itemDatails" className="dropdown-item">
         {props.texto}
-      </a>
+      </NavLink>
     </li>
   );
 };

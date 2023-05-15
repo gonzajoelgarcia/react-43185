@@ -1,19 +1,11 @@
 import React, { useState } from "react";
-import "./CardList.css";
+import "./Item.css";
+import { useNavigate } from "react-router-dom";
+import ItemCount from "./ItemCount";
 
-const Card = (props) => {
-  const { imagen, titulo, descripcion } = props;
-  const [number, setNumber] = useState(0);
-
-  const incrementNumber = () => {
-    setNumber(number + 1);
-  };
-
-  const decrementNumber = () => {
-    if (number > 0) {
-      setNumber(number - 1);
-    }
-  };
+const item = (props) => {
+  const { id, imagen, titulo, descripcion } = props;
+  const navigate = useNavigate();
 
   return (
     <div className="card" style={{ width: "18rem" }}>
@@ -31,19 +23,10 @@ const Card = (props) => {
         >
           <h5 className="card-title">{titulo}</h5>
           <p className="card-text">{descripcion}</p>
-          <div className="card-number-container">
-            <div className="card-buttons">
-              <button onClick={decrementNumber} style={{ marginRight: "5px" }}>
-                -
-              </button>
-              <h2 className="card-number">{number}</h2>
-              <button onClick={incrementNumber} style={{ marginRight: "5px" }}>
-                +
-              </button>
-            </div>
-          </div>
+          <div className="card-number-container"></div>
+          <ItemCount />
           <button
-            href="#"
+            onClick={() => navigate(`/Card/${id}`)}
             className="btn btn-primary"
             style={{
               borderRadius: "5px",
@@ -51,7 +34,7 @@ const Card = (props) => {
               marginTop: "10px",
             }}
           >
-            AGREGAR
+            VER MÁS
           </button>
         </div>
       </div>
@@ -59,4 +42,4 @@ const Card = (props) => {
   );
 };
 
-export default Card;
+export default item;

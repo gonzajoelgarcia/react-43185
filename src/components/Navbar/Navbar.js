@@ -2,6 +2,7 @@ import React from "react";
 import NavbarItem from "./NavbarItem";
 import CardWidget from "../CardWidget/CardWidget";
 import "./Navbar.css";
+import { NavLink } from "react-router-dom";
 
 const items = ["Fútbol Argentino", "Temporada 22/23", "Retro"];
 
@@ -24,26 +25,26 @@ const Navbar = (props) => {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <a className="nav-link active" aria-current="page" href="!#">
+              <NavLink to="/" className="nav-link active" aria-current="page">
                 Inicio
-              </a>
+              </NavLink>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="!#">
+              <NavLink to="/nosotros" className="nav-link">
                 Nosotros
-              </a>
+              </NavLink>
             </li>
             <li className="nav-item dropdown">
-              <a
+              <NavLink
+                to="/ItemDetails"
                 className="nav-link dropdown-toggle"
-                href="!#"
                 id="navbarDropdown"
                 role="button"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
                 Camisetas
-              </a>
+              </NavLink>
               <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
                 {items.map((texto) => (
                   <NavbarItem key={texto} texto={texto} />
