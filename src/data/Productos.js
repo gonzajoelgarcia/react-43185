@@ -1,4 +1,5 @@
 import React from "react";
+
 /* imagenes */
 import imagen1 from "../assets/imagen1.png";
 import imagen2 from "../assets/imagen2.png";
@@ -73,13 +74,11 @@ const items = [
     imagen: imagen10,
   },
 ];
-const getProducts = () => {
+export const getProducts = () => {
   return new Promise((res, rej) => {
+    <div></div>;
     setTimeout(() => {
       res(items);
     }, 2000);
   });
 };
-return <div>Productos</div>;
-
-export default productos;

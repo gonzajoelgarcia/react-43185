@@ -1,7 +1,16 @@
 import React from "react";
+import { getProducts } from "../../data/Productos";
+import { useState, useEffect } from "react";
+import ItemList from "./ItemList";
 
 const ItemListContainer = () => {
-  return <h1>ItemListContainer</h1>;
+  const [productos, setProductos] = useState([]);
+  useEffect(() => {
+    getProducts().then((products) => {
+      setProductos(products);
+    });
+  }, []);
+  return <ItemList productos={productos} />;
 };
 
 export default ItemListContainer;

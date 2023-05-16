@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import "./Item.css";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import ItemCount from "./ItemCount";
+import "./item.css";
 
 const item = (props) => {
   const { id, imagen, titulo, descripcion } = props;

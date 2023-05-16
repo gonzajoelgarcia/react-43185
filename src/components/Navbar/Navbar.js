@@ -1,9 +1,8 @@
 import React from "react";
 import NavbarItem from "./NavbarItem";
 import CardWidget from "../CardWidget/CardWidget";
-import "./Navbar.css";
 import { NavLink } from "react-router-dom";
-
+import "./Navbar.css";
 const items = ["Fútbol Argentino", "Temporada 22/23", "Retro"];
 
 const Navbar = (props) => {
