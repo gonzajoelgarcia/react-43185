@@ -4,7 +4,7 @@ const ItemList = ({ productos }) =>
   productos.map((producto) => (
     <li key={producto.id}>
       <img src={producto.imagen} alt="" />
-      <h3>{producto.titulo}</h3>
+      <h5>{producto.titulo}</h5>
       <p>{producto.descripcion}</p>
     </li>
   ));

@@ -1,16 +1,16 @@
 import React from "react";
 
 /* imagenes */
-import imagen1 from "../assets/imagen1.png";
-import imagen2 from "../assets/imagen2.png";
-import imagen3 from "../assets/imagen3.png";
-import imagen4 from "../assets/imagen4.png";
-import imagen5 from "../assets/imagen5.png";
-import imagen6 from "../assets/imagen6.png";
-import imagen7 from "../assets/imagen7.png";
-import imagen8 from "../assets/imagen8.png";
-import imagen9 from "../assets/imagen9.png";
-import imagen10 from "../assets/imagen10.png";
+import imagen1 from "../../assets/imagen1.png";
+import imagen2 from "../../assets/imagen2.png";
+import imagen3 from "../../assets/imagen3.png";
+import imagen4 from "../../assets/imagen4.png";
+import imagen5 from "../../assets/imagen5.png";
+import imagen6 from "../../assets/imagen6.png";
+import imagen7 from "../../assets/imagen7.png";
+import imagen8 from "../../assets/imagen8.png";
+import imagen9 from "../../assets/imagen9.png";
+import imagen10 from "../../assets/imagen10.png";
 
 const items = [
   {
@@ -76,7 +76,6 @@ const items = [
 ];
 export const getProducts = () => {
   return new Promise((res, rej) => {
-    <div></div>;
     setTimeout(() => {
       res(items);
     }, 2000);

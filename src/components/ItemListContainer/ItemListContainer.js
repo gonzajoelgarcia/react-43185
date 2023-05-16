@@ -1,5 +1,5 @@
 import React from "react";
-import { getProducts } from "../../data/Productos";
+import { getProducts } from "../data/Productos";
 import { useState, useEffect } from "react";
 import ItemList from "./ItemList";
 
