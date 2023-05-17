@@ -1,5 +1,5 @@
 import React from "react";
-import { items } from "../components/data/Productos"; // Importa el array de productos
+import { items } from "../components/data/Productos";
 import { useNavigate } from "react-router-dom";
 
 const Retro = () => {

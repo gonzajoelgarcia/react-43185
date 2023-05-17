@@ -6,7 +6,7 @@ import "./Navbar.css";
 
 const items = [
   { texto: "Retro", to: "/Retro" },
-  { texto: "Temporada 22/23", to: "Temporada 20/23" },
+  { texto: "Temporada 22/23", to: "Temporada" },
 ];
 
 const Navbar = (props) => {
