@@ -2,12 +2,11 @@ import React, { useState, useEffect } from "react";
 import { Fragment } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { items } from "../components/data/Productos";
-import Item from "../components/Items/Item";
 
 const ItemDetails = () => {
   const navigate = useNavigate();
   const { id } = useParams();
-  const [producto, setProducto] = useState(null);
+  const [producto, setProducto] = useState();
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -24,13 +23,15 @@ const ItemDetails = () => {
         <h1>Cargando producto...</h1>
       ) : (
         <div>
-          {producto && (
-            <Item
+          {producto ? (
+            <items
               key={producto.id}
               imagen={producto.imagen}
               titulo={producto.titulo}
               descripcion={producto.descripcion}
             />
+          ) : (
+            <h1>Producto no encontrado</h1>
           )}
           <button
             onClick={() => navigate(-1)}
