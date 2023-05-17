@@ -4,7 +4,10 @@ import CardWidget from "../CardWidget/CardWidget";
 import { NavLink } from "react-router-dom";
 import "./Navbar.css";
 
-const items = ["Retro", "Temporada 22/23"];
+const items = [
+  { texto: "Retro", to: "/Retro" },
+  { texto: "Temporada 22/23", to: "Temporada 20/23" },
+];
 
 const Navbar = (props) => {
   return (
@@ -28,8 +31,8 @@ const Navbar = (props) => {
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item"></li>
             <li className="nav-item">
-              <NavLink to="/nosotros" className="nav-link">
-                Nosotros
+              <NavLink to="/MiLista" className="nav-link">
+                Mi Lista
               </NavLink>
             </li>
             <li className="nav-item dropdown">
@@ -44,8 +47,8 @@ const Navbar = (props) => {
                 Camisetas
               </NavLink>
               <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                {items.map((texto) => (
-                  <NavbarItem key={texto} texto={texto} />
+                {items.map((item) => (
+                  <NavbarItem texto={item.texto} to={item.to} />
                 ))}
               </ul>
             </li>

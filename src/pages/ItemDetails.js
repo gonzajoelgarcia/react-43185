@@ -26,60 +26,70 @@ const ItemDetails = () => {
       titulo: "Boca Juniors Titular 2002",
       descripcion: "$25.000",
       imagen: imagen1,
+      categoria: "Retro",
     },
     {
       id: "2",
       titulo: "Francia Titular 2006",
       descripcion: "$25.000",
       imagen: imagen2,
+      categoria: "Retro",
     },
     {
       id: "3",
       titulo: "Real Madrid Titular 2006/07",
       descripcion: "$25.000",
       imagen: imagen3,
+      categoria: "Retro",
     },
     {
       id: "4",
       titulo: "Lazio Visitante 2000/01",
       descripcion: "$25.000",
       imagen: imagen4,
+      categoria: "Retro",
     },
     {
       id: "5",
       titulo: "M. United Titular 1992/93",
       descripcion: "$25.000",
       imagen: imagen5,
+      categoria: "Retro",
     },
     {
       id: "6",
       titulo: "Lazio Titular 2022/23",
       descripcion: "$28.000",
       imagen: imagen6,
+      categoria: "Temporada",
     },
     {
       id: "7",
       titulo: "Arsenal Titular 2022/23",
       descripcion: "$28.000",
       imagen: imagen7,
+      categoria: "Temporada",
     },
     {
       id: "8",
       titulo: "Barcelona Titular 2022/23",
       descripcion: "$26.500",
       imagen: imagen8,
+      categoria: "Temporada",
     },
     {
       id: "9",
       titulo: "Japón Especial 2023",
       descripcion: "$32.000",
       imagen: imagen9,
+      categoria: "Temporada",
     },
     {
       id: "10",
       titulo: "Corinthians 3ra 2022/23",
       descripcion: "$26.500",
       imagen: imagen10,
+      categoria: "Temporada",
     },
   ];
 
@@ -91,10 +101,16 @@ const ItemDetails = () => {
     }, 1000);
   });
 
+  const agregarAlCarrito = () => {
+    navigate("/MiLista");
+  };
+
   return (
     <Fragment>
       {loading ? (
-        <h1>Cargando producto...</h1>
+        <div className="manshega">
+          <h1>Cargando producto...</h1>
+        </div>
       ) : (
         <div>
           {Item ? (
@@ -133,7 +149,9 @@ const ItemDetails = () => {
                 </p>
                 <p>El id: {item.id}</p>
                 <div className="buttons">
-                  <button className="add">Agregar al carrito</button>
+                  <button onClick={agregarAlCarrito} className="add">
+                    Agregar al carrito
+                  </button>
                   <button className="like">
                     <span>♥</span>
                   </button>

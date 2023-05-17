@@ -4,8 +4,8 @@ import { NavLink } from "react-router-dom";
 
 const NavbarItem = (props) => {
   return (
-    <li>
-      <NavLink to="/ItemDetails" className="dropdown-item">
+    <li key={props.texto}>
+      <NavLink to={props.to} className="dropdown-item">
         {props.texto}
       </NavLink>
     </li>

@@ -13,7 +13,9 @@ img:hover {
 }
 
 .card {
-  display: grid;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
   width: 290px;
   height: 480px;
   border-radius: 50px;

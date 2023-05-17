@@ -198,3 +198,10 @@ h2 {
   box-shadow: none;
   transform: translateY(0);
 }
+
+.manshega {
+  position: relative;
+  margin-top: 250px;
+  margin-bottom: 0;
+  margin-left: 600px;
+}
