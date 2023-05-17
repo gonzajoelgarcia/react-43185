@@ -13,6 +13,7 @@ img:hover {
 }
 
 .card {
+  display: grid;
   width: 290px;
   height: 480px;
   border-radius: 50px;

@@ -3,11 +3,11 @@ import { useNavigate } from "react-router-dom";
 import "./Item.css";
 
 const Item = (props) => {
-  const { id, imagen, titulo, descripcion } = props;
+  const { imagen, titulo, descripcion, id } = props;
   const navigate = useNavigate();
 
   return (
-    <div className="card" style={{ width: "18rem" }}>
+    <div className="card d-flex" style={{ width: "18rem" }}>
       <div className="contenedor">
         <div className="imagen">
           <img src={imagen} className="card-img-top" alt="" />
@@ -20,11 +20,11 @@ const Item = (props) => {
             alignItems: "center",
           }}
         >
-          <h5 className="card-title">{titulo}</h5>
+          <h3 className="card-title">{titulo}</h3>
           <p className="card-text">{descripcion}</p>
           <div className="card-number-container"></div>
           <button
-            onClick={() => navigate(`/item/${id}`)}
+            onClick={() => navigate(`/Item/${id}`)}
             className="btn btn-primary"
             style={{
               borderRadius: "5px",

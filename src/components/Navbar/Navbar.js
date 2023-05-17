@@ -4,7 +4,7 @@ import CardWidget from "../CardWidget/CardWidget";
 import { NavLink } from "react-router-dom";
 import "./Navbar.css";
 
-const items = ["Fútbol Argentino", "Temporada 22/23", "Retro"];
+const items = ["Retro", "Temporada 22/23"];
 
 const Navbar = (props) => {
   return (
