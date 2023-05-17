@@ -1,9 +1,8 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import ItemCount from "./ItemCount";
-import item from "./Item.css";
+import "./Item.css";
 
-const item = (props) => {
+const Item = (props) => {
   const { id, imagen, titulo, descripcion } = props;
   const navigate = useNavigate();
 
@@ -24,9 +23,8 @@ const item = (props) => {
           <h5 className="card-title">{titulo}</h5>
           <p className="card-text">{descripcion}</p>
           <div className="card-number-container"></div>
-          <ItemCount />
           <button
-            onClick={() => navigate(`/Card/${id}`)}
+            onClick={() => navigate(`/item/${id}`)}
             className="btn btn-primary"
             style={{
               borderRadius: "5px",
@@ -42,4 +40,4 @@ const item = (props) => {
   );
 };
 
-export default item;
+export default Item;

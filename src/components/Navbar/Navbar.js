@@ -8,9 +8,11 @@ const items = ["Fútbol Argentino", "Temporada 22/23", "Retro"];
 
 const Navbar = (props) => {
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-transparent">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="container-fluid">
-        <img className="navbarLogo" src={props.navbarLogo} alt="Logo" />
+        <NavLink to="/" className="navbarLogo" href="/" alt="Logo">
+          <img className="navbarLogo" src={props.navbarLogo} alt="Logo" />
+        </NavLink>
         <button
           className="navbar-toggler"
           type="button"
@@ -24,11 +26,7 @@ const Navbar = (props) => {
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-            <li className="nav-item">
-              <NavLink to="/" className="nav-link active" aria-current="page">
-                Inicio
-              </NavLink>
-            </li>
+            <li className="nav-item"></li>
             <li className="nav-item">
               <NavLink to="/nosotros" className="nav-link">
                 Nosotros

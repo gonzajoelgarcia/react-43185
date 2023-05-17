@@ -10,7 +10,11 @@ const ItemListContainer = () => {
       setProductos(products);
     });
   }, []);
-  return <ItemList productos={productos} />;
+  return (
+    <div>
+      <ItemList productos={productos} />
+    </div>
+  );
 };
 
 export default ItemListContainer;

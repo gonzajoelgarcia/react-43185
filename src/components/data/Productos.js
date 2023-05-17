@@ -1,6 +1,3 @@
-import React from "react";
-
-/* imagenes */
 import imagen1 from "../../assets/imagen1.png";
 import imagen2 from "../../assets/imagen2.png";
 import imagen3 from "../../assets/imagen3.png";
@@ -12,7 +9,7 @@ import imagen8 from "../../assets/imagen8.png";
 import imagen9 from "../../assets/imagen9.png";
 import imagen10 from "../../assets/imagen10.png";
 
-const items = [
+export const items = [
   {
     id: "1",
     titulo: "Boca Juniors Titular 2002",
@@ -81,3 +78,5 @@ export const getProducts = () => {
     }, 2000);
   });
 };
+
+export default items;
