@@ -47,8 +47,8 @@ const Navbar = (props) => {
                 Camisetas
               </NavLink>
               <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                {items.map((item) => (
-                  <NavbarItem texto={item.texto} to={item.to} />
+                {items.map((item, index) => (
+                  <NavbarItem key={index} texto={item.texto} to={item.to} />
                 ))}
               </ul>
             </li>

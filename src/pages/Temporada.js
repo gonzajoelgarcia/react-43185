@@ -1,6 +1,7 @@
 import React from "react";
 import { items } from "../components/data/Productos";
 import { useNavigate } from "react-router-dom";
+import "../components/Items/Item.css";
 
 const Temporada = () => {
   const temporadaItems = items.filter((item) => item.categoria === "Temporada");

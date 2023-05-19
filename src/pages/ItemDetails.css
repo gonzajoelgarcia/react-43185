@@ -1,16 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Lato:400,700");
 
-/* center container in the middle */
-html {
-  display: grid;
-  min-height: 100%;
-}
-
-body {
-  display: grid;
-  text-transform: uppercase;
-}
-
 .container-detalles {
   margin: auto;
   overflow: hidden;

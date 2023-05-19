@@ -7,7 +7,7 @@ const Item = (props) => {
   const navigate = useNavigate();
 
   return (
-    <div className="card d-flex" style={{ width: "18rem" }}>
+    <div className="card" style={{ width: "18rem" }}>
       <div className="contenedor">
         <div className="imagen">
           <img src={imagen} className="card-img-top" alt="" />

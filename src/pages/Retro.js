@@ -1,6 +1,7 @@
 import React from "react";
 import { items } from "../components/data/Productos";
 import { useNavigate } from "react-router-dom";
+import "../components/Items/Item.css";
 
 const Retro = () => {
   const retroItems = items.filter((item) => item.categoria === "Retro");
@@ -10,7 +11,7 @@ const Retro = () => {
     <div>
       <h1>Retro</h1>
       {retroItems.map((item) => (
-        <div className="card d-flex" style={{ width: "18rem" }}>
+        <div className="card" style={{ width: "18rem" }}>
           <div className="contenedor">
             <div className="imagen">
               <img src={item.imagen} className="card-img-top" alt="" />
