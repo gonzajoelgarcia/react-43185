@@ -8,6 +8,12 @@
   background: white;
 }
 
+.items-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 20px;
+}
+
 p {
   font-size: 0.6em;
   color: black;

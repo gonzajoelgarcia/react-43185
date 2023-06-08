@@ -17,7 +17,7 @@ const Home = () => {
   const items = [
     {
       id: "1",
-      titulo: "Boca Juniors Titular 2002",
+      titulo: "Boca Juniors 2002",
       descripcion: "$25.000",
       imagen: imagen1,
       categoria: "Retro",
@@ -31,14 +31,14 @@ const Home = () => {
     },
     {
       id: "3",
-      titulo: "Real Madrid Titular 2006/07",
+      titulo: "Real Madrid 2006",
       descripcion: "$25.000",
       imagen: imagen3,
       categoria: "Retro",
     },
     {
       id: "4",
-      titulo: "Lazio Visitante 2000/01",
+      titulo: "Lazio 2000/01",
       descripcion: "$25.000",
       imagen: imagen4,
       categoria: "Retro",
@@ -66,7 +66,7 @@ const Home = () => {
     },
     {
       id: "8",
-      titulo: "Barcelona Titular 2022/23",
+      titulo: "Barcelona 2022/23",
       descripcion: "$26.500",
       imagen: imagen8,
       categoria: "Temporada 22/23",
@@ -89,8 +89,8 @@ const Home = () => {
 
   return (
     <Fragment>
-      <h1 className="tituloHome">Bievenidos a FUT</h1>
-      <div className="card">
+      <h1 className="tituloprimary">Bievenidos a FUT</h1>
+      <div className="items-container">
         {items.map((item) => (
           <Item key={item.id} {...item} />
         ))}

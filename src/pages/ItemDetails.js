@@ -23,7 +23,7 @@ const ItemDetails = () => {
   const items = [
     {
       id: "1",
-      titulo: "Boca Juniors Titular 2002",
+      titulo: "Boca Juniors 2002",
       descripcion: "$25.000",
       imagen: imagen1,
       categoria: "Retro",
@@ -37,7 +37,7 @@ const ItemDetails = () => {
     },
     {
       id: "3",
-      titulo: "Real Madrid Titular 2006/07",
+      titulo: "Real Madrid 2006/07",
       descripcion: "$25.000",
       imagen: imagen3,
       categoria: "Retro",
@@ -72,7 +72,7 @@ const ItemDetails = () => {
     },
     {
       id: "8",
-      titulo: "Barcelona Titular 2022/23",
+      titulo: "Barcelona 2022/23",
       descripcion: "$26.500",
       imagen: imagen8,
       categoria: "Temporada",
@@ -100,10 +100,6 @@ const ItemDetails = () => {
       setLoading(false);
     }, 1000);
   });
-
-  const agregarAlCarrito = () => {
-    navigate("/MiLista");
-  };
 
   return (
     <Fragment>
@@ -149,10 +145,16 @@ const ItemDetails = () => {
                 </p>
                 <p>El id: {item.id}</p>
                 <div className="buttons">
-                  <button onClick={agregarAlCarrito} className="add">
+                  <button
+                    onClick={() => navigate(`./MiLista.js`)}
+                    className="add"
+                  >
                     Agregar al carrito
                   </button>
-                  <button className="like">
+                  <button
+                    onClick={() => navigate(`./MiLista.js`)}
+                    className="like"
+                  >
                     <span>♥</span>
                   </button>
                 </div>

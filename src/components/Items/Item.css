@@ -10,13 +10,30 @@ img:hover {
 .card {
   display: flex;
   word-wrap: break-word;
-  background: #e0e0e0;
-  box-shadow: 20px 20px 60px #bebebe, -20px -20px 60px #ffffff;
-  border: 1px solid #e0e0e0be;
-  border-radius: 50px;
-  flex-direction: row;
+  box-sizing: border-box;
+  background: rgba(217, 217, 217, 0.58);
+  border: 1px solid white;
+  box-shadow: 12px 17px 51px rgba(0, 0, 0, 0.22);
+  backdrop-filter: blur(6px);
+  border-radius: 17px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.5s;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  font-weight: bolder;
+  color: black;
   flex-wrap: wrap;
   justify-content: space-between;
+  padding: 12px;
+}
+
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
 }
 
 .card-wrapper {
@@ -100,4 +117,9 @@ img:hover {
 .btn-primary:active {
   box-shadow: none;
   transform: translateY(0);
+}
+
+.tituloprimary {
+  display: flex;
+  justify-content: center;
 }

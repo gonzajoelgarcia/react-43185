@@ -12,7 +12,7 @@ import imagen10 from "../../assets/imagen10.png";
 export const items = [
   {
     id: "1",
-    titulo: "Boca Juniors Titular 2002",
+    titulo: "Boca Juniors 2002",
     descripcion: "$25.000",
     imagen: imagen1,
     categoria: "Retro",
@@ -26,7 +26,7 @@ export const items = [
   },
   {
     id: "3",
-    titulo: "Real Madrid Titular 2006/07",
+    titulo: "Real Madrid 2006/07",
     descripcion: "$25.000",
     imagen: imagen3,
     categoria: "Retro",
@@ -61,7 +61,7 @@ export const items = [
   },
   {
     id: "8",
-    titulo: "Barcelona Titular 2022/23",
+    titulo: "Barcelona 2022/23",
     descripcion: "$26.500",
     imagen: imagen8,
     categoria: "Temporada",
