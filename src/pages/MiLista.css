@@ -1,0 +1,35 @@
+.formtest {
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.labeltest {
+  margin-bottom: 10px;
+}
+
+.inputtes {
+  padding: 5px;
+  margin-left: 5px;
+}
+
+.buttontest[type="submit"] {
+  margin-top: 10px;
+  padding: 8px 16px;
+  background-color: #f5f5f5;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.buttontest[type="submit"]:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+p,
+h2 {
+  display: flex;
+  justify-content: center;
+}

@@ -13,6 +13,7 @@ const Temporada = () => {
       <div className="cards-container">
         {temporadaItems.map((item) => (
           <div className="card d-flex" style={{ width: "18rem" }}>
+            <div key={item.id}>{item.name}</div>
             <div className="contenedor">
               <div className="imagen">
                 <img src={item.imagen} className="card-img-top" alt="" />

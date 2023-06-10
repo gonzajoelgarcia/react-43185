@@ -2,7 +2,6 @@ import React, { Fragment } from "react";
 import { items } from "../components/data/Productos";
 import { useNavigate } from "react-router-dom";
 import "../components/Items/Item.css";
-import ItemCount from "../components/Items/ItemCount";
 
 const Retro = () => {
   const retroItems = items.filter((item) => item.categoria === "Retro");
@@ -14,6 +13,7 @@ const Retro = () => {
       <div className="cards-container">
         {retroItems.map((item) => (
           <div className="card" style={{ width: "18rem" }}>
+            <div key={item.id}>{item.name}</div>
             <div className="contenedor">
               <div className="imagen">
                 <img src={item.imagen} className="card-img-top" alt="" />
@@ -29,7 +29,6 @@ const Retro = () => {
                 <h3 className="card-title">{item.titulo}</h3>
                 <p className="card-text">{item.descripcion}</p>
                 <div className="card-number-container"></div>
-                <ItemCount />
                 <button
                   onClick={() => navigate(`/Item/${item.id}`)}
                   className="btn btn-primary"

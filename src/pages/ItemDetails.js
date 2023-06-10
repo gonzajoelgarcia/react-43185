@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { Fragment } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import Item from "../components/Items/Item";
 import "./ItemDetails.css";
 /* imagenes */
 import imagen1 from "../assets/imagen1.png";
@@ -15,91 +14,99 @@ import imagen8 from "../assets/imagen8.png";
 import imagen9 from "../assets/imagen9.png";
 import imagen10 from "../assets/imagen10.png";
 
-const ItemDetails = () => {
+const ItemDetails = ({ product, onAddToCart }) => {
+  const handleAddToCart = (item) => {
+    navigate("/src/pages/MiLista.js");
+  };
   const navigate = useNavigate();
   const { id } = useParams();
   const [item, setItem] = useState();
   const [loading, setLoading] = useState(true);
-  const items = [
-    {
-      id: "1",
-      titulo: "Boca Juniors 2002",
-      descripcion: "$25.000",
-      imagen: imagen1,
-      categoria: "Retro",
-    },
-    {
-      id: "2",
-      titulo: "Francia Titular 2006",
-      descripcion: "$25.000",
-      imagen: imagen2,
-      categoria: "Retro",
-    },
-    {
-      id: "3",
-      titulo: "Real Madrid 2006/07",
-      descripcion: "$25.000",
-      imagen: imagen3,
-      categoria: "Retro",
-    },
-    {
-      id: "4",
-      titulo: "Lazio Visitante 2000/01",
-      descripcion: "$25.000",
-      imagen: imagen4,
-      categoria: "Retro",
-    },
-    {
-      id: "5",
-      titulo: "M. United Titular 1992/93",
-      descripcion: "$25.000",
-      imagen: imagen5,
-      categoria: "Retro",
-    },
-    {
-      id: "6",
-      titulo: "Lazio Titular 2022/23",
-      descripcion: "$28.000",
-      imagen: imagen6,
-      categoria: "Temporada",
-    },
-    {
-      id: "7",
-      titulo: "Arsenal Titular 2022/23",
-      descripcion: "$28.000",
-      imagen: imagen7,
-      categoria: "Temporada",
-    },
-    {
-      id: "8",
-      titulo: "Barcelona 2022/23",
-      descripcion: "$26.500",
-      imagen: imagen8,
-      categoria: "Temporada",
-    },
-    {
-      id: "9",
-      titulo: "Japón Especial 2023",
-      descripcion: "$32.000",
-      imagen: imagen9,
-      categoria: "Temporada",
-    },
-    {
-      id: "10",
-      titulo: "Corinthians 3ra 2022/23",
-      descripcion: "$26.500",
-      imagen: imagen10,
-      categoria: "Temporada",
-    },
-  ];
+  const items = useMemo(
+    () => [
+      {
+        id: "1",
+        titulo: "Boca Juniors 2002",
+        descripcion: "$25.000",
+        imagen: imagen1,
+        categoria: "Retro",
+      },
+      {
+        id: "2",
+        titulo: "Francia Titular 2006",
+        descripcion: "$25.000",
+        imagen: imagen2,
+        categoria: "Retro",
+      },
+      {
+        id: "3",
+        titulo: "Real Madrid 2006/07",
+        descripcion: "$25.000",
+        imagen: imagen3,
+        categoria: "Retro",
+      },
+      {
+        id: "4",
+        titulo: "Lazio Visitante 2000/01",
+        descripcion: "$25.000",
+        imagen: imagen4,
+        categoria: "Retro",
+      },
+      {
+        id: "5",
+        titulo: "M. United Titular 1992/93",
+        descripcion: "$25.000",
+        imagen: imagen5,
+        categoria: "Retro",
+      },
+      {
+        id: "6",
+        titulo: "Lazio Titular 2022/23",
+        descripcion: "$28.000",
+        imagen: imagen6,
+        categoria: "Temporada",
+      },
+      {
+        id: "7",
+        titulo: "Arsenal Titular 2022/23",
+        descripcion: "$28.000",
+        imagen: imagen7,
+        categoria: "Temporada",
+      },
+      {
+        id: "8",
+        titulo: "Barcelona 2022/23",
+        descripcion: "$26.500",
+        imagen: imagen8,
+        categoria: "Temporada",
+      },
+      {
+        id: "9",
+        titulo: "Japón Especial 2023",
+        descripcion: "$32.000",
+        imagen: imagen9,
+        categoria: "Temporada",
+      },
+      {
+        id: "10",
+        titulo: "Corinthians 3ra 2022/23",
+        descripcion: "$26.500",
+        imagen: imagen10,
+        categoria: "Temporada",
+      },
+    ],
+    []
+  );
 
   useEffect(() => {
-    setTimeout(() => {
-      const filter = items.find((item) => item.id === id);
+    const filter = items.find((item) => item.id === id);
+    if (filter) {
       setItem(filter);
       setLoading(false);
-    }, 1000);
-  });
+    } else {
+      navigate("/");
+    }
+  }, [id, items, navigate]);
 
   return (
     <Fragment>
@@ -109,7 +116,7 @@ const ItemDetails = () => {
         </div>
       ) : (
         <div>
-          {Item ? (
+          {item ? (
             <div className="container-detalles">
               <div className="images">
                 <img
@@ -145,14 +152,11 @@ const ItemDetails = () => {
                 </p>
                 <p>El id: {item.id}</p>
                 <div className="buttons">
-                  <button
-                    onClick={() => navigate(`./MiLista.js`)}
-                    className="add"
-                  >
+                  <button onClick={() => handleAddToCart(item)}>
                     Agregar al carrito
                   </button>
                   <button
-                    onClick={() => navigate(`./MiLista.js`)}
+                    onClick={() => navigate("./MiLista.js")}
                     className="like"
                   >
                     <span>♥</span>
