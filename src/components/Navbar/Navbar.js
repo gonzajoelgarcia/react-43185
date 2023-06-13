@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import NavbarItem from "./NavbarItem";
 import CardWidget from "../CardWidget/CardWidget";
 import { NavLink } from "react-router-dom";
 import "./Navbar.css";
+import { CartContext } from "../../pages/CartProvider";
 
 const items = [
   { texto: "Retro", to: "/Retro" },
@@ -10,6 +11,7 @@ const items = [
 ];
 
 const Navbar = (props) => {
+  const { cartItems } = useContext(CartContext);
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="container-fluid">
@@ -64,7 +66,7 @@ const Navbar = (props) => {
             <button className="btn btn-outline-light" type="submit">
               <CardWidget />
               <span className="cart-count" id="cart-count">
-                2
+                {cartItems.length}
               </span>
             </button>
           </form>
