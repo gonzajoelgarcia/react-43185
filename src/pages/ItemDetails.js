@@ -1,7 +1,8 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect, useMemo, useContext } from "react";
 import { Fragment } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import "./ItemDetails.css";
+import { CartContext } from "../pages/CartProvider";
 /* imagenes */
 import imagen1 from "../assets/imagen1.png";
 import imagen2 from "../assets/imagen2.png";
@@ -14,12 +15,16 @@ import imagen8 from "../assets/imagen8.png";
 import imagen9 from "../assets/imagen9.png";
 import imagen10 from "../assets/imagen10.png";
 
-const ItemDetails = ({ product, onAddToCart }) => {
-  const handleAddToCart = (item) => {
-    navigate("/src/pages/MiLista.js");
-  };
-  const navigate = useNavigate();
+const ItemDetails = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
+  const { addToCart } = useContext(CartContext);
+
+  const handleAddToCart = (item) => {
+    addToCart(item);
+    navigate("/MiLista");
+  };
+
   const [item, setItem] = useState();
   const [loading, setLoading] = useState(true);
   const items = useMemo(
@@ -27,70 +32,70 @@ const ItemDetails = ({ product, onAddToCart }) => {
       {
         id: "1",
         titulo: "Boca Juniors 2002",
-        descripcion: "$25.000",
+        descripcion: "$25000",
         imagen: imagen1,
         categoria: "Retro",
       },
       {
         id: "2",
         titulo: "Francia Titular 2006",
-        descripcion: "$25.000",
+        descripcion: "$25000",
         imagen: imagen2,
         categoria: "Retro",
       },
       {
         id: "3",
         titulo: "Real Madrid 2006/07",
-        descripcion: "$25.000",
+        descripcion: "$25000",
         imagen: imagen3,
         categoria: "Retro",
       },
       {
         id: "4",
         titulo: "Lazio Visitante 2000/01",
-        descripcion: "$25.000",
+        descripcion: "$25000",
         imagen: imagen4,
         categoria: "Retro",
       },
       {
         id: "5",
         titulo: "M. United Titular 1992/93",
-        descripcion: "$25.000",
+        descripcion: "$25000",
         imagen: imagen5,
         categoria: "Retro",
       },
       {
         id: "6",
         titulo: "Lazio Titular 2022/23",
-        descripcion: "$28.000",
+        descripcion: "$28000",
         imagen: imagen6,
         categoria: "Temporada",
       },
       {
         id: "7",
         titulo: "Arsenal Titular 2022/23",
-        descripcion: "$28.000",
+        descripcion: "$28000",
         imagen: imagen7,
         categoria: "Temporada",
       },
       {
         id: "8",
         titulo: "Barcelona 2022/23",
-        descripcion: "$26.500",
+        descripcion: "$26500",
         imagen: imagen8,
         categoria: "Temporada",
       },
       {
         id: "9",
         titulo: "Japón Especial 2023",
-        descripcion: "$32.000",
+        descripcion: "$32000",
         imagen: imagen9,
         categoria: "Temporada",
       },
       {
         id: "10",
         titulo: "Corinthians 3ra 2022/23",
-        descripcion: "$26.500",
+        descripcion: "$26500",
         imagen: imagen10,
         categoria: "Temporada",
       },
@@ -147,7 +152,7 @@ const ItemDetails = ({ product, onAddToCart }) => {
                 <h1>{item.titulo}</h1>
                 <h2>{item.descripcion}</h2>
                 <p className="desc">
-                  Camisetas de alta calidad, al mejor precio, con envio gratis a
+                  Camisetas de alta calidad, al mejor precio, con envío gratis a
                   su hogar.
                 </p>
                 <p>El id: {item.id}</p>
@@ -155,10 +160,7 @@ const ItemDetails = ({ product, onAddToCart }) => {
                   <button onClick={() => handleAddToCart(item)}>
                     Agregar al carrito
                   </button>
-                  <button
-                    onClick={() => navigate("./MiLista.js")}
-                    className="like"
-                  >
+                  <button onClick={() => navigate("/MiLista")} className="like">
                     <span>♥</span>
                   </button>
                 </div>

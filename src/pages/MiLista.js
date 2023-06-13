@@ -1,178 +1,119 @@
-import React, { useEffect, useState } from "react";
-import { db } from "../firebaseConfig";
+import React, { useContext, useState } from "react";
+import { CartContext } from "./CartProvider";
+import Formulario from "./Formulario";
 import "./MiLista.css";
 
 const MiLista = () => {
-  const [carrito, setCarrito] = useState([]);
-  const [products, setProducts] = useState([]);
-  const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    phone: "",
-    email: "",
-    confirmEmail: "",
-  });
-  const [canPurchase, setCanPurchase] = useState(false);
-  const [selectedProducts, setSelectedProducts] = useState([]);
+  const { cartItems } = useContext(CartContext);
+  const [mostrarFormulario, setMostrarFormulario] = useState(false);
+  const [productosSeleccionados, setProductosSeleccionados] = useState([]);
+  const [totalPrice, setTotalPrice] = useState(0);
 
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+  const handleMostrarFormulario = () => {
+    setMostrarFormulario(true);
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleCambiarCantidad = (item, cantidad) => {
+    const productoIndex = productosSeleccionados.findIndex(
+      (producto) => producto.id === item.id
+    );
 
-    const orderData = {
-      firstName: formData.firstName,
-      lastName: formData.lastName,
-      phone: formData.phone,
-      email: formData.email,
-      products: selectedProducts,
-    };
+    if (productoIndex !== -1) {
+      const productosActualizados = [...productosSeleccionados];
+      productosActualizados[productoIndex].cantidad += cantidad;
+      setProductosSeleccionados(productosActualizados);
+      actualizarPrecioTotal(productosActualizados);
+    } else {
+      const productoSeleccionado = {
+        id: item.id,
+        precio: parseInt(item.descripcion.replace("$", "")),
+        cantidad: 1,
+      };
 
-    db.collection("ordenes")
-      .add(orderData)
-      .then((docRef) => {
-        const orderId = docRef.id;
-        alert(`¡Compra realizada! Número de orden: ${orderId}`);
-        setSelectedProducts([]);
-        setFormData({
-          firstName: "",
-          lastName: "",
-          phone: "",
-          email: "",
-          confirmEmail: "",
-        });
-      })
-      .catch((error) => {
-        alert(
-          "Hubo un error al realizar la compra. Por favor, inténtalo nuevamente."
-        );
-      });
+      setProductosSeleccionados([
+        ...productosSeleccionados,
+        productoSeleccionado,
+      ]);
+      actualizarPrecioTotal([...productosSeleccionados, productoSeleccionado]);
+    }
   };
 
-  const validateEmail = () => {
-    return formData.email === formData.confirmEmail;
+  const actualizarPrecioTotal = (productos) => {
+    const total = productos.reduce(
+      (total, producto) => total + producto.precio * producto.cantidad,
+      0
+    );
+    setTotalPrice(total);
   };
-
-  const handleAddToCart = (product) => {
-    setCarrito([...carrito, product]);
-    const selectedProduct = { ...product, quantity: 1 };
-    setSelectedProducts([selectedProduct]);
-  };
-
-  useEffect(() => {
-    const unsubscribe = db.collection("productos").onSnapshot((snapshot) => {
-      const productsData = snapshot.docs.map((doc) => doc.data());
-      setProducts(productsData);
-    });
-
-    return () => unsubscribe();
-  }, []);
 
   return (
-    <div>
-      <h2>Listado compacto de la orden</h2>
-      {canPurchase ? (
-        <form className="formtest" onSubmit={handleSubmit}>
-          <label className="labeltest">
-            Nombre:
-            <input
-              className="inputtest"
-              type="text"
-              name="firstName"
-              value={formData.firstName}
-              onChange={handleChange}
-            />
-          </label>
-          <label className="labeltest">
-            Apellido:
-            <input
-              type="text"
-              name="lastName"
-              value={formData.lastName}
-              onChange={handleChange}
-            />
-          </label>
-          <label className="labeltest">
-            Teléfono:
-            <input
-              type="text"
-              name="phone"
-              value={formData.phone}
-              onChange={handleChange}
-            />
-          </label>
-          <label className="labeltest">
-            E-mail:
-            <input
-              type="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-            />
-          </label>
-          <label className="labeltest">
-            Confirmar E-mail:
-            <input
-              type="email"
-              name="confirmEmail"
-              value={formData.confirmEmail}
-              onChange={handleChange}
-            />
-          </label>
-          <button
-            className="buttontest"
-            type="submit"
-            disabled={!validateEmail()}
-          >
-            Realizar compra
-          </button>
-        </form>
+    <div className="mi-lista-container">
+      <h1 className="mi-lista-title">Mi Lista de Compra</h1>
+      {cartItems.length === 0 ? (
+        <p className="mi-lista-message">No hay productos en el carrito.</p>
       ) : (
-        <button
-          className="buttontest"
-          type="button"
-          disabled={!validateEmail()}
-          onClick={() => setCanPurchase(true)}
-        >
-          Realizar compra
-        </button>
-      )}
-      {canPurchase && <p>¡Compra realizada! Número de orden: XXXX</p>}
-      <div>
-        <h3>Producto seleccionado:</h3>
-        {selectedProducts.length > 0 ? (
-          <ul>
-            {selectedProducts.map((selectedProduct) => (
-              <li key={selectedProduct.id}>
-                {selectedProduct.titulo} - Precio: {selectedProduct.precio}
-              </li>
-            ))}
+        <>
+          <ul className="mi-lista-items">
+            {cartItems.map((item) => {
+              const productoSeleccionado = productosSeleccionados.find(
+                (producto) => producto.id === item.id
+              );
+
+              return (
+                <li key={item.id} className="mi-lista-item">
+                  <div className="mi-lista-product">
+                    <img
+                      src={item.imagen}
+                      alt="imagen-de-producto"
+                      className="mi-lista-product-image"
+                    />
+                    <div className="mi-lista-product-details">
+                      <p className="mi-lista-product-title">{item.titulo}</p>
+                      <p className="mi-lista-product-price">
+                        {item.descripcion}
+                      </p>
+                      <p className="mi-lista-product-id">El id: {item.id}</p>
+                      <div className="mi-lista-quantity">
+                        <button
+                          onClick={() => handleCambiarCantidad(item, -1)}
+                          className="mi-lista-quantity-button"
+                        >
+                          -
+                        </button>
+                        <span className="mi-lista-quantity-value">
+                          {productoSeleccionado
+                            ? productoSeleccionado.cantidad
+                            : 0}
+                        </span>
+                        <button
+                          onClick={() => handleCambiarCantidad(item, 1)}
+                          className="mi-lista-quantity-button"
+                        >
+                          +
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              );
+            })}
           </ul>
-        ) : (
-          <p>No hay productos agregados.</p>
-        )}
-      </div>
-      {products.length > 0 ? (
-        <div>
-          <h3>Productos disponibles:</h3>
-          <ul>
-            {products.map((product) => (
-              <li key={product.id}>
-                {product.titulo}{" "}
-                <button onClick={() => handleAddToCart(product)}>
-                  Agregar al carrito
-                </button>
-              </li>
-            ))}
-          </ul>
-        </div>
-      ) : (
-        <p>No hay productos disponibles.</p>
+          <p className="mi-lista-total">Precio Total: ${totalPrice}</p>
+          {!mostrarFormulario && (
+            <button
+              onClick={handleMostrarFormulario}
+              className="mi-lista-button"
+            >
+              Realizar Compra
+            </button>
+          )}
+          {mostrarFormulario && (
+            <Formulario
+              productosSeleccionados={productosSeleccionados}
+              setProductosSeleccionados={setProductosSeleccionados}
+            />
+          )}
+        </>
       )}
     </div>
   );
