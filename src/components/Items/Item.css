@@ -123,3 +123,21 @@ img:hover {
   display: flex;
   justify-content: center;
 }
+
+@media (min-width: 576px) {
+  .card {
+    width: 16rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .card {
+    width: 18rem;
+  }
+}
+
+@media (min-width: 992px) {
+  .card {
+    width: 20rem;
+  }
+}

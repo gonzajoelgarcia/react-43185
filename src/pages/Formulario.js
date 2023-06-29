@@ -11,24 +11,51 @@ const Formulario = ({ productosSeleccionados, setProductosSeleccionados }) => {
   const [email, setEmail] = useState("");
   const [confirmado, setConfirmado] = useState(false);
   const [numeroOrden, setNumeroOrden] = useState("");
+  const [error, setError] = useState(null);
+
+  const nombreApellidoRegex = /^[a-zA-Z\s]*$/;
+  const telefonoRegex = /^\d+$/;
+  const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
 
   const handleConfirmarCompra = async () => {
+    if (
+      !nombre.match(nombreApellidoRegex) ||
+      !apellido.match(nombreApellidoRegex)
+    ) {
+      setError("El nombre y el apellido solo pueden contener letras.");
+      return;
+    }
+
+    if (!telefono.match(telefonoRegex)) {
+      setError("El teléfono solo puede contener números.");
+      return;
+    }
+
+    if (!email.match(emailRegex)) {
+      setError("Ingresa un correo electrónico válido.");
+      return;
+    }
+
+    if (!nombre || !apellido || !telefono || !email) {
+      setError("Por favor, completa todos los campos del formulario.");
+      return;
+    }
+
     try {
-      // Guardar la orden en Firestore
       const docRef = await db.collection("ordenes").add({
         nombre,
         apellido,
         telefono,
         email,
-        productos: productosSeleccionados, // Agrega los productos seleccionados a la orden
+        productos: productosSeleccionados,
       });
 
-      // Obtener el número de orden generado por Firestore
       const numeroOrden = docRef.id;
 
       setNumeroOrden(numeroOrden);
       setConfirmado(true);
-      setProductosSeleccionados([]); // Reinicia los productos seleccionados
+      setProductosSeleccionados([]);
+      setError(null);
     } catch (error) {
       console.error("Error al guardar la orden:", error);
     }
@@ -87,6 +114,8 @@ const Formulario = ({ productosSeleccionados, setProductosSeleccionados }) => {
           Confirmar Compra
         </button>
       </form>
+
+      {error && <p className="formulario-error">{error}</p>}
 
       {confirmado && (
         <p className="formulario-message">

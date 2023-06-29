@@ -122,7 +122,7 @@ const ItemDetails = () => {
       ) : (
         <div>
           {item ? (
-            <div className="container-detalles">
+            <div className="item-details-container">
               <div className="images">
                 <img
                   className="images"
@@ -169,17 +169,22 @@ const ItemDetails = () => {
           ) : (
             <h1>Producto no encontrado</h1>
           )}
-          <button
-            onClick={() => navigate(-1)}
-            className="btn btn-secundary"
-            style={{
-              borderRadius: "5px",
-              padding: "10px 20px",
-              marginTop: "10px",
-            }}
-          >
-            VOLVER ATRÁS
-          </button>
+          <div className="button-container">
+            <button
+              onClick={() => navigate(-1)}
+              className="btn btn-secundary"
+              style={{
+                borderRadius: "5px",
+                padding: "10px 20px",
+                marginTop: "10px",
+                marginLeft: "auto",
+                marginRight: "auto",
+                display: "block",
+              }}
+            >
+              VOLVER ATRÁS
+            </button>
+          </div>
         </div>
       )}
     </Fragment>

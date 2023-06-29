@@ -103,3 +103,36 @@
   border-radius: 4px;
   background-color: #f0f0f0;
 }
+
+.mi-lista-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Responsive */
+
+@media screen and (max-width: 600px) {
+  .mi-lista-container {
+    padding: 10px;
+  }
+
+  .mi-lista-items {
+    margin-top: 10px;
+  }
+
+  .mi-lista-item {
+    max-width: 100%;
+  }
+
+  .mi-lista-product {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .mi-lista-product-image {
+    width: 80px;
+    height: 80px;
+  }
+}

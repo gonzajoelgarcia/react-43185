@@ -3,17 +3,27 @@ import { db } from "../firebaseConfig";
 
 export const CartContext = createContext();
 
-export const CartProvider = (props) => {
+const CartProvider = (props) => {
   const [cartItems, setCartItems] = useState([]);
   const [orderPlaced, setOrderPlaced] = useState(false);
   const [orderNumber, setOrderNumber] = useState(null);
 
   const addToCart = (item) => {
-    setCartItems((prevItems) => [...prevItems, item]);
+    const existingItem = cartItems.find((cartItem) => cartItem.id === item.id);
+
+    if (existingItem) {
+      const updatedItems = cartItems.map((cartItem) =>
+        cartItem.id === item.id
+          ? { ...cartItem, quantity: cartItem.quantity + 1 }
+          : cartItem
+      );
+      setCartItems(updatedItems);
+    } else {
+      setCartItems((prevItems) => [...prevItems, { ...item, quantity: 1 }]);
+    }
   };
 
   const placeOrder = async (userInfo) => {
-    // Crea una nueva orden en la base de datos con los productos y la información del usuario
     try {
       const orderData = {
         products: cartItems,

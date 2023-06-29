@@ -43,3 +43,21 @@
   font-size: 18px;
   margin-top: 10px;
 }
+
+/* Responsive */
+
+@media screen and (max-width: 600px) {
+  .formulario-form {
+    align-items: center;
+  }
+
+  .formulario-input {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .formulario-button {
+    width: 100%;
+    max-width: 300px;
+  }
+}

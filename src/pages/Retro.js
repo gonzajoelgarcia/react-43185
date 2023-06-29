@@ -12,7 +12,7 @@ const Retro = () => {
       <h1 className="tituloprimary">Retro</h1>
       <div className="cards-container">
         {retroItems.map((item) => (
-          <div className="card" style={{ width: "18rem" }}>
+          <div className="card" style={{ width: "18rem" }} key={item.id}>
             <div key={item.id}>{item.name}</div>
             <div className="contenedor">
               <div className="imagen">

@@ -6,7 +6,13 @@ const CartProvider = (props) => {
   const [cartItems, setCartItems] = useState([]);
 
   const addItem = (item) => {
-    setCartItems([...cartItems, item]);
+    if (!isItemInCart(item)) {
+      setCartItems([...cartItems, item]);
+    }
+  };
+
+  const isItemInCart = (item) => {
+    return cartItems.some((cartItem) => cartItem.id === item.id);
   };
 
   const removeItem = (item) => {

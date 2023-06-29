@@ -9,7 +9,7 @@ import Retro from "./pages/Retro";
 import Temporada from "./pages/Temporada";
 import ItemDetails from "./pages/ItemDetails";
 import ItemListContainer from "./components/ItemListContainer/ItemListContainer";
-import { CartProvider } from "./pages/CartProvider";
+import CartProvider from "./pages/CartProvider";
 
 function App() {
   const [cartItems, setCartItems] = useState([]);
