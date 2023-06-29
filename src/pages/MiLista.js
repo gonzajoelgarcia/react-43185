@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { CartContext } from "./CartProvider";
 import Formulario from "./Formulario";
 import "./MiLista.css";
+import { Link } from "react-router-dom";
 
 const MiLista = () => {
   const { cartItems } = useContext(CartContext);
@@ -103,12 +104,17 @@ const MiLista = () => {
           </ul>
           <p className="mi-lista-total">Precio Total: ${totalPrice}</p>
           {!mostrarFormulario && (
-            <button
-              onClick={handleMostrarFormulario}
-              className="mi-lista-button"
-            >
-              Realizar Compra
-            </button>
+            <>
+              <button
+                onClick={handleMostrarFormulario}
+                className="mi-lista-button"
+              >
+                Realizar Compra
+              </button>
+              <Link to="/" className="mi-lista-button-add">
+                Agregar Productos
+              </Link>
+            </>
           )}
           {mostrarFormulario && (
             <Formulario
