@@ -21,6 +21,9 @@ const MiLista = () => {
     if (productoIndex !== -1) {
       const productosActualizados = [...productosSeleccionados];
       productosActualizados[productoIndex].cantidad += cantidad;
+      if (productosActualizados[productoIndex].cantidad < 0) {
+        productosActualizados[productoIndex].cantidad = 0;
+      }
       setProductosSeleccionados(productosActualizados);
       actualizarPrecioTotal(productosActualizados);
     } else {
