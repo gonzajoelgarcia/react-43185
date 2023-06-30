@@ -3,9 +3,11 @@ import { CartContext } from "./CartProvider";
 import Formulario from "./Formulario";
 import "./MiLista.css";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
 
 const MiLista = () => {
-  const { cartItems } = useContext(CartContext);
+  const { cartItems, removeFromCart } = useContext(CartContext);
   const [mostrarFormulario, setMostrarFormulario] = useState(false);
   const [productosSeleccionados, setProductosSeleccionados] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
@@ -40,6 +42,15 @@ const MiLista = () => {
       ]);
       actualizarPrecioTotal([...productosSeleccionados, productoSeleccionado]);
     }
+  };
+
+  const handleEliminarProducto = (item) => {
+    removeFromCart(item);
+    const productosActualizados = productosSeleccionados.filter(
+      (producto) => producto.id !== item.id
+    );
+    setProductosSeleccionados(productosActualizados);
+    actualizarPrecioTotal(productosActualizados);
   };
 
   const actualizarPrecioTotal = (productos) => {
@@ -77,6 +88,8 @@ const MiLista = () => {
                         {item.descripcion}
                       </p>
                       <p className="mi-lista-product-id">El id: {item.id}</p>
+                    </div>
+                    <div className="mi-lista-buttons">
                       <div className="mi-lista-quantity">
                         <button
                           onClick={() => handleCambiarCantidad(item, -1)}
@@ -96,6 +109,12 @@ const MiLista = () => {
                           +
                         </button>
                       </div>
+                      <button
+                        onClick={() => handleEliminarProducto(item)}
+                        className="mi-lista-delete-button"
+                      >
+                        <FontAwesomeIcon icon={faTrash} />
+                      </button>
                     </div>
                   </div>
                 </li>

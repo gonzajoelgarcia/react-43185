@@ -23,6 +23,13 @@ const CartProvider = (props) => {
     }
   };
 
+  const removeFromCart = (item) => {
+    const updatedItems = cartItems.filter(
+      (cartItem) => cartItem.id !== item.id
+    );
+    setCartItems(updatedItems);
+  };
+
   const placeOrder = async (userInfo) => {
     try {
       const orderData = {
@@ -42,7 +49,14 @@ const CartProvider = (props) => {
 
   return (
     <CartContext.Provider
-      value={{ cartItems, addToCart, placeOrder, orderPlaced, orderNumber }}
+      value={{
+        cartItems,
+        addToCart,
+        removeFromCart,
+        placeOrder,
+        orderPlaced,
+        orderNumber,
+      }}
     >
       {props.children}
     </CartContext.Provider>

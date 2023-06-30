@@ -129,6 +129,26 @@
   padding: 20px;
 }
 
+.mi-lista-buttons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.mi-lista-quantity {
+  display: flex;
+  align-items: center;
+}
+
+.mi-lista-delete-button {
+  background-color: transparent;
+  border: 1px solid red;
+  color: red;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
 /* Responsive */
 
 @media screen and (max-width: 600px) {
