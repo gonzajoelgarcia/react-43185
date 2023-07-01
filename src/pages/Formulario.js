@@ -4,7 +4,11 @@ import { firebase } from "../firebaseConfig";
 
 const db = firebase.firestore();
 
-const Formulario = ({ productosSeleccionados, setProductosSeleccionados }) => {
+const Formulario = ({
+  productosSeleccionados,
+  setProductosSeleccionados,
+  onVolverAlCarrito,
+}) => {
   const [nombre, setNombre] = useState("");
   const [apellido, setApellido] = useState("");
   const [telefono, setTelefono] = useState("");
@@ -50,78 +54,77 @@ const Formulario = ({ productosSeleccionados, setProductosSeleccionados }) => {
         productos: productosSeleccionados,
       });
 
-      const numeroOrden = docRef.id;
-
-      setNumeroOrden(numeroOrden);
+      setNumeroOrden(docRef.id);
       setConfirmado(true);
       setProductosSeleccionados([]);
       setError(null);
     } catch (error) {
-      console.error("Error al guardar la orden:", error);
+      console.error("Error al confirmar la compra:", error);
+      setError("Error al confirmar la compra. Por favor, intenta nuevamente.");
     }
   };
 
   return (
     <div className="formulario-container">
-      <h1 className="formulario-title">Formulario de Compra</h1>
-      <form className="formulario-form">
-        <label htmlFor="nombre" className="formulario-label">
-          Nombre:
-        </label>
-        <input
-          type="text"
-          id="nombre"
-          value={nombre}
-          onChange={(e) => setNombre(e.target.value)}
-          className="formulario-input"
-        />
-        <label htmlFor="apellido" className="formulario-label">
-          Apellido:
-        </label>
-        <input
-          type="text"
-          id="apellido"
-          value={apellido}
-          onChange={(e) => setApellido(e.target.value)}
-          className="formulario-input"
-        />
-        <label htmlFor="telefono" className="formulario-label">
-          Teléfono:
-        </label>
-        <input
-          type="text"
-          id="telefono"
-          value={telefono}
-          onChange={(e) => setTelefono(e.target.value)}
-          className="formulario-input"
-        />
-        <label htmlFor="email" className="formulario-label">
-          E-mail:
-        </label>
-        <input
-          type="email"
-          id="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          className="formulario-input"
-        />
-
-        <button
-          type="button"
-          onClick={handleConfirmarCompra}
-          className="formulario-button"
-        >
-          Confirmar Compra
-        </button>
-      </form>
-
-      {error && <p className="formulario-error">{error}</p>}
-
-      {confirmado && (
-        <p className="formulario-message">
-          ¡Compra confirmada! El número de orden es:{" "}
-          <strong>{numeroOrden}</strong>.
-        </p>
+      {!confirmado ? (
+        <>
+          <h2 className="formulario-title">Completa tus datos</h2>
+          {error && <p className="formulario-error">{error}</p>}
+          <div className="formulario-inputs">
+            <div className="formulario-input">
+              <label htmlFor="nombre">Nombre</label>
+              <input
+                type="text"
+                id="nombre"
+                value={nombre}
+                onChange={(e) => setNombre(e.target.value)}
+              />
+            </div>
+            <div className="formulario-input">
+              <label htmlFor="apellido">Apellido</label>
+              <input
+                type="text"
+                id="apellido"
+                value={apellido}
+                onChange={(e) => setApellido(e.target.value)}
+              />
+            </div>
+            <div className="formulario-input">
+              <label htmlFor="telefono">Teléfono</label>
+              <input
+                type="text"
+                id="telefono"
+                value={telefono}
+                onChange={(e) => setTelefono(e.target.value)}
+              />
+            </div>
+            <div className="formulario-input">
+              <label htmlFor="email">Correo Electrónico</label>
+              <input
+                type="email"
+                id="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </div>
+          </div>
+          <button onClick={handleConfirmarCompra} className="formulario-button">
+            Confirmar Compra
+          </button>
+          <button
+            onClick={onVolverAlCarrito}
+            className="formulario-button-volver"
+          >
+            Volver al Carrito
+          </button>
+        </>
+      ) : (
+        <>
+          <h2 className="formulario-title">¡Compra confirmada!</h2>
+          <p className="formulario-confirmacion">
+            Gracias por tu compra. El número de tu orden es: {numeroOrden}.
+          </p>
+        </>
       )}
     </div>
   );

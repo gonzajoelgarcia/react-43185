@@ -61,6 +61,10 @@ const MiLista = () => {
     setTotalPrice(total);
   };
 
+  const handleVolverAlCarrito = () => {
+    setMostrarFormulario(false);
+  };
+
   return (
     <div className="mi-lista-container">
       <h1 className="mi-lista-title">Mi Lista de Compra</h1>
@@ -136,10 +140,19 @@ const MiLista = () => {
             </>
           )}
           {mostrarFormulario && (
-            <Formulario
-              productosSeleccionados={productosSeleccionados}
-              setProductosSeleccionados={setProductosSeleccionados}
-            />
+            <>
+              <button
+                onClick={handleVolverAlCarrito}
+                className="mi-lista-button"
+              >
+                Volver al Carrito
+              </button>
+              <Formulario
+                productosSeleccionados={productosSeleccionados}
+                setProductosSeleccionados={setProductosSeleccionados}
+                onVolverAlCarrito={handleVolverAlCarrito}
+              />
+            </>
           )}
         </>
       )}

@@ -44,9 +44,27 @@
   cursor: pointer;
 }
 
+.formulario-error {
+  color: red;
+  margin-top: 10px;
+}
+
 .formulario-message {
   font-size: 18px;
   margin-top: 10px;
+}
+
+.formulario-button-volver {
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  background-color: #ff5555;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 10px;
+  display: block;
 }
 
 /* Responsive */
@@ -61,7 +79,8 @@
     max-width: 300px;
   }
 
-  .formulario-button {
+  .formulario-button,
+  .formulario-button-volver {
     width: 100%;
     max-width: 300px;
   }
