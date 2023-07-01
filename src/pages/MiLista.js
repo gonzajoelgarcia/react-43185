@@ -13,7 +13,9 @@ const MiLista = () => {
   const [totalPrice, setTotalPrice] = useState(0);
 
   const handleMostrarFormulario = () => {
-    setMostrarFormulario(true);
+    if (productosSeleccionados.length > 0) {
+      setMostrarFormulario(true);
+    }
   };
 
   const handleCambiarCantidad = (item, cantidad) => {
@@ -130,6 +132,7 @@ const MiLista = () => {
             <>
               <button
                 onClick={handleMostrarFormulario}
+                disabled={productosSeleccionados.length === 0}
                 className="mi-lista-button"
               >
                 Realizar Compra
